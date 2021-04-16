@@ -10,6 +10,7 @@ import Foundation
 enum Token {
     case keyword
     case symbol
+    case identifier
     case intConst
     case stringConst
 }
@@ -38,43 +39,196 @@ enum Keyword {
     case this
 }
 
+enum Symbol {
+    case openingCurlyBracket // {
+    case closingCurlyBracket // }
+    case openingRoundBracket // (
+    case closingRoundBracket // )
+    case openingSquareBracket // [
+    case closingSquareBracket // ]
+    case dot // .
+    case comma // ,
+    case simecolons // ;
+    case plusSign // +
+    case minusSign // -
+    case multiplicationSign // *
+    case divisionSign // /
+    case ampersand // &
+    case verticalBar // |
+    case less // <
+    case more // >
+    case equal // =
+    case tilde // ~
+}
+
+enum TokenizerError: Error {
+    case wrongKeyword(value: String?)
+    case wrongSymbol(value: String?)
+    case wrongIntVal(value: String?)
+    case wrongStringVal(value: String?)
+    case wrongIdentifier(value: String?)
+}
+
 final class Tokenizer {
     
     private let code: String
-    
+    private var currentIndex: Int = 0
+    private var _isComment: Bool = false
+    private var currentToken: String?
+    private var nextToken: String?
+    private let symbols: [String: Symbol] = [
+        "{": .openingCurlyBracket,
+        "}": .closingCurlyBracket,
+        "(": .openingRoundBracket,
+        ")": .closingRoundBracket,
+        "]": .openingSquareBracket,
+        "[": .closingSquareBracket,
+        ".": .dot,
+        ",": .comma,
+        ";": .simecolons,
+        "+": .plusSign,
+        "-": .minusSign,
+        "*": .multiplicationSign,
+        "/": .divisionSign,
+        "&": .ampersand,
+        "|": .verticalBar,
+        "<": .less,
+        ">": .more,
+        "=": .equal,
+        "~": .tilde
+    ]
+    private let keywords: [String: Keyword] = [
+        "class": .class,
+        "constructor": .constructor,
+        "function": .function,
+        "method": .method,
+        "field": .field,
+        "static": .static,
+        "var": .var,
+        "int": .int,
+        "char": .char,
+        "boolean": .boolean,
+        "void": .void,
+        "true": .true,
+        "false": .false,
+        "null": .null,
+        "this": .this,
+        "let": .let,
+        "do": .do,
+        "if": .if,
+        "else": .else,
+        "while": .while,
+        "return": .return,
+    ]
+
     init(_ code: String) {
         self.code = code
     }
     
     func hasMoreTokens() -> Bool {
-        true
+        while(!isEnd()) {
+            if isWhitespacesOrNewlines() {
+                currentIndex += 1
+            } else if code[currentIndex] == "/" {
+                skipComment()
+            } else {
+                return true
+            }
+        }
+        return false
     }
     
     func advance() {
-        
+        let currentSymbol = code[currentIndex]
+        if symbols.keys.contains(currentSymbol) {
+            extractSymbol()
+        } else {
+            extractWord()
+        }
     }
     
     func tokenType() -> Token {
-        .keyword
+        if currentToken!.hasPrefix("\"\"") {
+            return .stringConst
+        } else if Int(currentToken!) != nil {
+            return .intConst
+        } else if symbols.keys.contains(currentToken!) {
+            return .symbol
+        } else if keywords.keys.contains(currentToken!) {
+            return .keyword
+        } else {
+            return .identifier
+        }
     }
     
-    func keyword() -> Keyword {
-        .boolean
+    func keyword() throws -> Keyword {
+        if let keyword = keywords[currentToken!] {
+            return keyword
+        } else {
+            throw TokenizerError.wrongKeyword(value: currentToken)
+        }
     }
     
-    func symbol() -> String {
-        ""
+    func symbol() throws -> Symbol {
+        if let symbol = symbols[currentToken!] {
+            return symbol
+        } else {
+            throw TokenizerError.wrongSymbol(value: currentToken)
+        }
     }
     
-    func identifier() -> String {
-        ""
+    func identifier() throws -> String {
+        if let currentToken = currentToken {
+            return currentToken
+        } else {
+            throw TokenizerError.wrongIdentifier(value: currentToken)
+        }
     }
     
-    func intVal() -> Int {
-        0
+    func intVal() throws -> Int {
+        switch Int(currentToken!) {
+        case .some(let value): return value
+        default: throw TokenizerError.wrongSymbol(value: currentToken)
+        }
     }
     
-    func stringVal() -> String {
-        ""
+    func stringVal() throws -> String {
+        if currentToken?.hasPrefix("\"\"") == true,
+           currentToken?.hasSuffix("\"\"") == true {
+           return String(currentToken!.dropFirst().dropLast())
+        } else {
+            throw TokenizerError.wrongStringVal(value: currentToken)
+        }
+    }
+}
+
+private extension Tokenizer {
+    
+    func extractSymbol() {
+        let currentSymbol = code[currentIndex]
+        currentToken = currentSymbol
+        currentIndex += 1
+    }
+
+    func extractWord() {
+        let start = currentIndex
+        while(!isWhitespacesOrNewlines()) {
+            currentIndex += 1
+        }
+        currentToken = code[start..<currentIndex + 1]
+    }
+    
+    func isWhitespacesOrNewlines() -> Bool {
+        CharacterSet.whitespacesAndNewlines.contains(Unicode.Scalar(code[currentIndex])!)
+    }
+    
+    func isEnd() -> Bool {
+        currentIndex > code.length
+    }
+    
+    func skipComment() {
+        while(code[currentIndex] != "\n") {
+            currentIndex += 1
+        }
     }
 }
