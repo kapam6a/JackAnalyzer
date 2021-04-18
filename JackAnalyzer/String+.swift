@@ -33,8 +33,15 @@ extension String {
         return String(self[start ..< end])
     }
     
-    mutating func tab() -> String {
-        self = self + "/t"
-        return self
+    func tab() -> String {
+        add("\t")
+    }
+    
+    func newLine() -> String {
+        add("\n")
+    }
+    
+    func add(_ string: String) -> String {
+        self + string
     }
 }

@@ -233,6 +233,20 @@ class TokenizerTests: XCTestCase {
         XCTAssertEqual(result, .keyword)
     }
     
+    func testTokenType_withKeywordAndSymbol_returnsKeyword() throws {
+        
+        // given
+        let sut = Tokenizer("class{")
+        _ = sut.hasMoreTokens()
+        sut.advance()
+         
+        // when
+        let result = sut.tokenType()
+        
+        // then
+        XCTAssertEqual(result, .keyword)
+    }
+    
     func testTokenType_withIdentifier_returnsIdentifier() throws {
         
         // given

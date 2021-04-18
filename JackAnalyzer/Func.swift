@@ -38,11 +38,20 @@ func or(_ f1: @escaping @autoclosure () throws -> Void,
 }
 
 private func _or(_ functions: () throws -> Void...) throws {
+    var resolved: Bool = false
     for f in functions {
         do {
             try f()
-            break
+            resolved = true
         } catch {}
     }
-    throw OrError.failed
+    if !resolved {
+        throw OrError.failed
+    }
+}
+
+func and(_ f1: @escaping @autoclosure () throws -> Void,
+         _ f2: @escaping @autoclosure () throws -> Void) throws {
+    try f1()
+    try f2()
 }

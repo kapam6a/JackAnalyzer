@@ -9,29 +9,91 @@ import XCTest
 
 class CompilationEngineTests: XCTestCase {
 
-    func testCompileReturn_returnsXML() throws {
+    func testCompileClass_returnsXML() throws {
         
         // given
         let code = """
         class Dog {
-        
         }
         """
         let sut = compilationEngine(code)
+        let expectedXML = """
+            <class>
+            <keyword>class</keyword>
+            <identifier>Dog</identifier>
+            <symbol>{</symbol>
+            <symbol>}</symbol>
+            </class>
+
+            """
         
         // when
         try sut.compileClass()
         
         // then
-        XCTAssertEqual(
-            sut.xml(),
-            """
+        XCTAssertEqual(sut.xml(), expectedXML)
+    }
+    
+    func testCompileClass_withField_returnsXML() throws {
+        
+        // given
+        let code = """
+        class Dog {
+            field int a;
+        }
+        """
+        let sut = compilationEngine(code)
+        let expectedXML = """
             <class>
-                <keyword>class</keyword>
-                <identifier>Dog</identifier>
+            <keyword>class</keyword>
+            <identifier>Dog</identifier>
+            <symbol>{</symbol>
+            <classVarDec>
+            <keyword>field</keyword>
+            <keyword>int</keyword>
+            <identifier>a</identifier>
+            <symbol>;</symbol>
+            </classVarDec>
+            <symbol>}</symbol>
             </class>
             """
-        )
+        
+        // when
+        try sut.compileClass()
+        
+        // then
+        XCTAssertEqual(sut.xml(), expectedXML)
+    }
+    
+    func testCompileClass_withFewFields_returnsXML() throws {
+        
+        // given
+        let code = """
+        class Dog {
+            field int a, b;
+        }
+        """
+        let sut = compilationEngine(code)
+        let expectedXML = """
+            <class>
+            <keyword>class</keyword>
+            <identifier>Dog</identifier>
+            <symbol>{</symbol>
+            <classVarDec>
+            <keyword>field</keyword>
+            <keyword>int</keyword>
+            <identifier>a</identifier>
+            <symbol>;</symbol>
+            </classVarDec>
+            <symbol>}</symbol>
+            </class>
+            """
+        
+        // when
+        try sut.compileClass()
+        
+        // then
+        XCTAssertEqual(sut.xml(), expectedXML)
     }
 }
 

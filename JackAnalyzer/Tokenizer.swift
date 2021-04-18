@@ -138,8 +138,7 @@ final class Tokenizer {
     }
     
     func advance() {
-        let currentSymbol = code[currentIndex]
-        if symbols.keys.contains(currentSymbol) {
+        if isSymbol() {
             extractSymbol()
         } else {
             extractWord()
@@ -211,7 +210,7 @@ private extension Tokenizer {
 
     func extractWord() {
         let start = currentIndex
-        while(!isWhitespacesOrNewlines() && !isEnd()) {
+        while(!isWhitespacesOrNewlines() && !isEnd() && !isSymbol()) {
             currentIndex += 1
         }
         currentToken = code[start..<currentIndex]
@@ -219,6 +218,10 @@ private extension Tokenizer {
     
     func isWhitespacesOrNewlines() -> Bool {
        [" ", "\n", "\t"].contains(code[currentIndex])
+    }
+    
+    func isSymbol() -> Bool {
+        symbols.keys.contains(code[currentIndex])
     }
     
     func skipComment() {

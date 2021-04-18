@@ -73,25 +73,26 @@ final class CompilationEngine {
     }
     
     func compileClass() throws {
-        ast.append("<class>")
+        ast = ast.add("<class>").newLine()
         try takeNextToken(eatKeyword(.class))
         try takeNextToken(eatIdentifier())
         try takeNextToken(eatSymbol(.openingCurlyBracket))
-        try zeroOrMore(compileVarDec())
-        try zeroOrMore(compileSubroutineDec())
+        try compileClassVarDec()
+//        try zeroOrMore(compileSubroutineDec())
         try takeNextToken(eatSymbol(.closingCurlyBracket))
-        ast.append("</class>")
+        ast = ast.add("</class>")
     }
     
     func compileClassVarDec() throws {
-        ast.append("<classVarDec>")
+        ast = ast.add("<classVarDec>").newLine()
         try takeNextToken(or(self.eatKeyword(.static),
                              self.eatKeyword(.field)))
         try takeNextToken(eatType())
         try takeNextToken(eatIdentifier())
-        try zeroOrMore(takeNextToken(eatIdentifier()))
+        try zeroOrMore(and(self.takeNextToken(self.eatSymbol(.comma)),
+                           self.takeNextToken(self.eatIdentifier())))
         try takeNextToken(eatSymbol(.simecolons))
-        ast.append("</classVarDec>")
+        ast = ast.add("</classVarDec>").newLine()
     }
     
     func compileSubroutineDec() throws {
@@ -194,17 +195,19 @@ final class CompilationEngine {
 private extension CompilationEngine {
     
     func takeNextToken(_ f: @autoclosure () throws -> Void) throws {
-        guard !unprocessedToken else { return }
-        if tokenizer.hasMoreTokens() {
-            tokenizer.advance()
-            do {
-                try f()
-            } catch {
-                unprocessedToken = true
-                throw error
+        if !unprocessedToken  {
+            if tokenizer.hasMoreTokens() {
+                tokenizer.advance()
+            } else {
+                throw CompilationEngineError.noMoreTokens
             }
-        } else {
-            throw CompilationEngineError.noMoreTokens
+        }
+        do {
+            try f()
+            unprocessedToken = false
+        } catch {
+            unprocessedToken = true
+            throw error
         }
     }
     
@@ -250,9 +253,10 @@ private extension CompilationEngine {
     func eatKeyword(_ keyword: Keyword) throws {
         if tokenizer.tokenType() == .keyword {
             if try tokenizer.keyword() == keyword {
-                ast.append("<keyword>")
-                ast.append(_keywords[keyword]!)
-                ast.append("</keyword>")
+                ast = ast
+                    .add("<keyword>")
+                    .add(_keywords[keyword]!)
+                    .add("</keyword>").newLine()
             } else {
                 throw CompilationEngineError.wrongKeyword
             }
@@ -264,9 +268,10 @@ private extension CompilationEngine {
     func eatSymbol(_ symbol: Symbol) throws {
         if tokenizer.tokenType() == .symbol {
             if try tokenizer.symbol() == symbol {
-                ast.append("<symbol>")
-                ast.append(_symbols[symbol]!)
-                ast.append("</symbol>")
+                ast = ast
+                    .add("<symbol>")
+                    .add(_symbols[symbol]!)
+                    .add("</symbol>").newLine()
             } else {
                 throw CompilationEngineError.wrongSymbol
             }
@@ -277,9 +282,10 @@ private extension CompilationEngine {
     
     func eatIdentifier() throws {
         if tokenizer.tokenType() == .identifier {
-            ast.append("<identifier>")
-            ast.append(try tokenizer.identifier())
-            ast.append("</identifier>")
+            ast = ast
+                .add("<identifier>")
+                .add(try tokenizer.identifier())
+                .add("</identifier>").newLine()
         } else {
             throw CompilationEngineError.identifierNotFound
         }
