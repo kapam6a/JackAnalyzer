@@ -66,6 +66,7 @@ final class CompilationEngine {
     
     private let tokenizer: Tokenizer
     private var ast: String = ""
+    private var unprocessedToken: Bool = false
     
     init(_ tokenizer: Tokenizer) {
         self.tokenizer = tokenizer
@@ -84,22 +85,22 @@ final class CompilationEngine {
     
     func compileClassVarDec() throws {
         ast.append("<classVarDec>")
-        try takeNextToken(or(eatKeyword(.static),
-                             eatKeyword(.field)))
+        try takeNextToken(or(self.eatKeyword(.static),
+                             self.eatKeyword(.field)))
         try takeNextToken(eatType())
         try takeNextToken(eatIdentifier())
-        try takeNextToken(eatIdentifier())
+        try zeroOrMore(takeNextToken(eatIdentifier()))
         try takeNextToken(eatSymbol(.simecolons))
         ast.append("</classVarDec>")
     }
     
     func compileSubroutineDec() throws {
         ast.append("<subroutineDec>")
-        try takeNextToken(or(eatKeyword(.constructor),
-                             eatKeyword(.function),
-                             eatKeyword(.method)))
-        try takeNextToken(or(eatKeyword(.void),
-                             eatType()))
+        try takeNextToken(or(self.eatKeyword(.constructor),
+                             self.eatKeyword(.function),
+                             self.eatKeyword(.method)))
+        try takeNextToken(or(self.eatKeyword(.void),
+                             self.eatType()))
         try takeNextToken(eatIdentifier())
         try takeNextToken(eatSymbol(.openingRoundBracket))
         try compileParameterList()
@@ -189,15 +190,38 @@ final class CompilationEngine {
 private extension CompilationEngine {
     
     func takeNextToken(_ f: @autoclosure () throws -> Void) throws {
+        guard !unprocessedToken else { return }
         if tokenizer.hasMoreTokens() {
             tokenizer.advance()
-            try f()
+            do {
+                try f()
+            } catch {
+                unprocessedToken = true
+                throw error
+            }
         } else {
             throw CompilationEngineError.noMoreTokens
         }
     }
     
-    func zerOrOne(_ f: @autoclosure () throws -> Void) throws {
+    func zeroOrOne(_ f: @autoclosure () throws -> Void) throws {
+        var stop: Bool = false
+        var count: Int = 0
+        while (!stop || count == 1) {
+            do {
+                try f()
+                count += 1
+            } catch CompilationEngineError.keywordNotFound {
+                stop = true
+            } catch CompilationEngineError.symbolNotFound {
+                stop = true
+            } catch CompilationEngineError.identifierNotFound {
+                stop = true
+            }
+        }
+    }
+    
+    func zeroOrMore(_ f: @autoclosure () throws -> Void) throws {
         var stop: Bool = false
         while (!stop) {
             do {
@@ -212,15 +236,11 @@ private extension CompilationEngine {
         }
     }
 
-    func zeroOrMore(_ f: @autoclosure () throws -> Void) throws {
-        
-    }
-
     func eatType() throws {
-        try or(eatKeyword(.int),
-               eatKeyword(.char),
-               eatKeyword(.boolean),
-               eatIdentifier())
+        try or(self.eatKeyword(.int),
+               self.eatKeyword(.char),
+               self.eatKeyword(.boolean),
+               self.eatIdentifier())
     }
     
     func eatKeyword(_ keyword: Keyword) throws {

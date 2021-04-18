@@ -7,68 +7,42 @@
 
 import Foundation
 
-func or(_ f1: @autoclosure () throws -> Void,
-        _ f2: @autoclosure () throws -> Void) throws {
-    do {
-        try f1()
-    } catch {
-        try f2()
-    }
+enum OrError: Error {
+    case failed
 }
 
-func or(_ f1: @autoclosure () throws -> Void,
-        _ f2: @autoclosure () throws -> Void,
-        _ f3: @autoclosure () throws -> Void) throws {
-    do {
-        try f1()
-    } catch {
-        do {
-            try f2()
-        } catch {
-            try f3()
-        }
-    }
+func or(_ f1: @escaping @autoclosure () throws -> Void,
+        _ f2: @escaping @autoclosure () throws -> Void) throws {
+    try _or(f1, f2)
 }
 
-func or(_ f1: @autoclosure () throws -> Void,
-        _ f2: @autoclosure () throws -> Void,
-        _ f3: @autoclosure () throws -> Void,
-        _ f4: @autoclosure () throws -> Void) throws {
-    do {
-        try f1()
-    } catch {
-        do {
-            try f2()
-        } catch {
-            do {
-                try f3()
-            } catch {
-                try f4()
-            }
-        }
-    }
+func or(_ f1: @escaping @autoclosure () throws -> Void,
+        _ f2: @escaping @autoclosure () throws -> Void,
+        _ f3: @escaping @autoclosure () throws -> Void) throws {
+    try _or(f1, f2, f3)
 }
 
-func or(_ f1: @autoclosure () throws -> Void,
-        _ f2: @autoclosure () throws -> Void,
-        _ f3: @autoclosure () throws -> Void,
-        _ f4: @autoclosure () throws -> Void,
-        _ f5: @autoclosure () throws -> Void) throws {
-    do {
-        try f1()
-    } catch {
+func or(_ f1: @escaping @autoclosure () throws -> Void,
+        _ f2: @escaping @autoclosure () throws -> Void,
+        _ f3: @escaping @autoclosure () throws -> Void,
+        _ f4: @escaping @autoclosure () throws -> Void) throws {
+    try _or(f1, f2, f3, f4)
+}
+
+func or(_ f1: @escaping @autoclosure () throws -> Void,
+        _ f2: @escaping @autoclosure () throws -> Void,
+        _ f3: @escaping @autoclosure () throws -> Void,
+        _ f4: @escaping @autoclosure () throws -> Void,
+        _ f5: @escaping @autoclosure () throws -> Void) throws {
+    try _or(f1, f2, f3, f4, f5)
+}
+
+private func _or(_ functions: () throws -> Void...) throws {
+    for f in functions {
         do {
-            try f2()
-        } catch {
-            do {
-                try f3()
-            } catch {
-                do {
-                    try f4()
-                } catch {
-                    try f5()
-                }
-            }
-        }
+            try f()
+            break
+        } catch {}
     }
+    throw OrError.failed
 }
