@@ -12,6 +12,12 @@
 		3C2A48C92626E8AB00D0E09D /* CompilationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A48C82626E8AB00D0E09D /* CompilationEngine.swift */; };
 		3C2A48CC2626EE0C00D0E09D /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A48CB2626EE0C00D0E09D /* String+.swift */; };
 		3C2A48CF2629958900D0E09D /* Func.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A48CE2629958900D0E09D /* Func.swift */; };
+		3C2A48D9262C1CDD00D0E09D /* TokenizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A48D8262C1CDD00D0E09D /* TokenizerTests.swift */; };
+		3C2A48FE262C21AA00D0E09D /* Tokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A48C52626E08E00D0E09D /* Tokenizer.swift */; };
+		3C2A4901262C21AC00D0E09D /* CompilationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A48C82626E8AB00D0E09D /* CompilationEngine.swift */; };
+		3C2A4904262C21AF00D0E09D /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A48CB2626EE0C00D0E09D /* String+.swift */; };
+		3C2A4907262C21B200D0E09D /* Func.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A48CE2629958900D0E09D /* Func.swift */; };
+		3C2A490B262C355A00D0E09D /* CompilationEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A490A262C355A00D0E09D /* CompilationEngineTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,10 +39,22 @@
 		3C2A48C82626E8AB00D0E09D /* CompilationEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompilationEngine.swift; sourceTree = "<group>"; };
 		3C2A48CB2626EE0C00D0E09D /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		3C2A48CE2629958900D0E09D /* Func.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Func.swift; sourceTree = "<group>"; };
+		3C2A48D6262C1CDD00D0E09D /* JackAnalyzerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JackAnalyzerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C2A48D8262C1CDD00D0E09D /* TokenizerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenizerTests.swift; sourceTree = "<group>"; };
+		3C2A48DA262C1CDD00D0E09D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3C2A48F2262C20B800D0E09D /* JackAnalyzer */ = {isa = PBXFileReference; lastKnownFileType = folder; path = JackAnalyzer; sourceTree = "<group>"; };
+		3C2A490A262C355A00D0E09D /* CompilationEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompilationEngineTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		3C2A48B62626DEE000D0E09D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C2A48D3262C1CDD00D0E09D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -50,7 +68,9 @@
 			isa = PBXGroup;
 			children = (
 				3C2A48BB2626DEE100D0E09D /* JackAnalyzer */,
+				3C2A48D7262C1CDD00D0E09D /* JackAnalyzerTests */,
 				3C2A48BA2626DEE100D0E09D /* Products */,
+				3C2A48F1262C20B800D0E09D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				3C2A48B92626DEE100D0E09D /* JackAnalyzer */,
+				3C2A48D6262C1CDD00D0E09D /* JackAnalyzerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -72,6 +93,24 @@
 				3C2A48CE2629958900D0E09D /* Func.swift */,
 			);
 			path = JackAnalyzer;
+			sourceTree = "<group>";
+		};
+		3C2A48D7262C1CDD00D0E09D /* JackAnalyzerTests */ = {
+			isa = PBXGroup;
+			children = (
+				3C2A48D8262C1CDD00D0E09D /* TokenizerTests.swift */,
+				3C2A490A262C355A00D0E09D /* CompilationEngineTests.swift */,
+				3C2A48DA262C1CDD00D0E09D /* Info.plist */,
+			);
+			path = JackAnalyzerTests;
+			sourceTree = "<group>";
+		};
+		3C2A48F1262C20B800D0E09D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3C2A48F2262C20B800D0E09D /* JackAnalyzer */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -94,6 +133,23 @@
 			productReference = 3C2A48B92626DEE100D0E09D /* JackAnalyzer */;
 			productType = "com.apple.product-type.tool";
 		};
+		3C2A48D5262C1CDD00D0E09D /* JackAnalyzerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3C2A48DD262C1CDD00D0E09D /* Build configuration list for PBXNativeTarget "JackAnalyzerTests" */;
+			buildPhases = (
+				3C2A48D2262C1CDD00D0E09D /* Sources */,
+				3C2A48D3262C1CDD00D0E09D /* Frameworks */,
+				3C2A48D4262C1CDD00D0E09D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JackAnalyzerTests;
+			productName = JackAnalyzerTests;
+			productReference = 3C2A48D6262C1CDD00D0E09D /* JackAnalyzerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -104,6 +160,9 @@
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
 					3C2A48B82626DEE000D0E09D = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					3C2A48D5262C1CDD00D0E09D = {
 						CreatedOnToolsVersion = 12.4;
 					};
 				};
@@ -122,9 +181,20 @@
 			projectRoot = "";
 			targets = (
 				3C2A48B82626DEE000D0E09D /* JackAnalyzer */,
+				3C2A48D5262C1CDD00D0E09D /* JackAnalyzerTests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3C2A48D4262C1CDD00D0E09D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3C2A48B52626DEE000D0E09D /* Sources */ = {
@@ -136,6 +206,19 @@
 				3C2A48CC2626EE0C00D0E09D /* String+.swift in Sources */,
 				3C2A48C62626E08E00D0E09D /* Tokenizer.swift in Sources */,
 				3C2A48CF2629958900D0E09D /* Func.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C2A48D2262C1CDD00D0E09D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C2A48D9262C1CDD00D0E09D /* TokenizerTests.swift in Sources */,
+				3C2A490B262C355A00D0E09D /* CompilationEngineTests.swift in Sources */,
+				3C2A4901262C21AC00D0E09D /* CompilationEngine.swift in Sources */,
+				3C2A4904262C21AF00D0E09D /* String+.swift in Sources */,
+				3C2A48FE262C21AA00D0E09D /* Tokenizer.swift in Sources */,
+				3C2A4907262C21B200D0E09D /* Func.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +358,40 @@
 			};
 			name = Release;
 		};
+		3C2A48DB262C1CDD00D0E09D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = JackAnalyzerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = NonOrg.JackAnalyzerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		3C2A48DC262C1CDD00D0E09D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = JackAnalyzerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = NonOrg.JackAnalyzerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -292,6 +409,15 @@
 			buildConfigurations = (
 				3C2A48C12626DEE100D0E09D /* Debug */,
 				3C2A48C22626DEE100D0E09D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3C2A48DD262C1CDD00D0E09D /* Build configuration list for PBXNativeTarget "JackAnalyzerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C2A48DB262C1CDD00D0E09D /* Debug */,
+				3C2A48DC262C1CDD00D0E09D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -185,6 +185,10 @@ final class CompilationEngine {
         ast.append("<expressionList>")
         ast.append("</expressionList>")
     }
+    
+    func xml() -> String {
+        ast
+    }
 }
 
 private extension CompilationEngine {

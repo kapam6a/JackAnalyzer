@@ -73,7 +73,6 @@ final class Tokenizer {
     
     private let code: String
     private var currentIndex: Int = 0
-    private var _isComment: Bool = false
     private var currentToken: String?
     private var nextToken: String?
     private let symbols: [String: Symbol] = [
@@ -148,7 +147,7 @@ final class Tokenizer {
     }
     
     func tokenType() -> Token {
-        if currentToken!.hasPrefix("\"\"") {
+        if currentToken!.hasPrefix("\"") {
             return .stringConst
         } else if Int(currentToken!) != nil {
             return .intConst
@@ -193,8 +192,8 @@ final class Tokenizer {
     }
     
     func stringVal() throws -> String {
-        if currentToken?.hasPrefix("\"\"") == true,
-           currentToken?.hasSuffix("\"\"") == true {
+        if currentToken?.hasPrefix("\"") == true,
+           currentToken?.hasSuffix("\"") == true {
            return String(currentToken!.dropFirst().dropLast())
         } else {
             throw TokenizerError.wrongStringVal(value: currentToken)
@@ -212,23 +211,23 @@ private extension Tokenizer {
 
     func extractWord() {
         let start = currentIndex
-        while(!isWhitespacesOrNewlines()) {
+        while(!isWhitespacesOrNewlines() && !isEnd()) {
             currentIndex += 1
         }
-        currentToken = code[start..<currentIndex + 1]
+        currentToken = code[start..<currentIndex]
     }
     
     func isWhitespacesOrNewlines() -> Bool {
-        CharacterSet.whitespacesAndNewlines.contains(Unicode.Scalar(code[currentIndex])!)
-    }
-    
-    func isEnd() -> Bool {
-        currentIndex > code.length
+       [" ", "\n", "\t"].contains(code[currentIndex])
     }
     
     func skipComment() {
-        while(code[currentIndex] != "\n") {
+        while(code[currentIndex] != "\n" && !isEnd()) {
             currentIndex += 1
         }
+    }
+    
+    func isEnd() -> Bool {
+        currentIndex >= code.length
     }
 }
