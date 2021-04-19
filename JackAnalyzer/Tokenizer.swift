@@ -74,7 +74,6 @@ final class Tokenizer {
     private let code: String
     private var currentIndex: Int = 0
     private var currentToken: String?
-    private var nextToken: String?
     private let symbols: [String: Symbol] = [
         "{": .openingCurlyBracket,
         "}": .closingCurlyBracket,

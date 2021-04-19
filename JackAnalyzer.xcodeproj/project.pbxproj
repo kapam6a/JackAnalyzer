@@ -18,6 +18,11 @@
 		3C2A4904262C21AF00D0E09D /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A48CB2626EE0C00D0E09D /* String+.swift */; };
 		3C2A4907262C21B200D0E09D /* Func.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A48CE2629958900D0E09D /* Func.swift */; };
 		3C2A490B262C355A00D0E09D /* CompilationEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A490A262C355A00D0E09D /* CompilationEngineTests.swift */; };
+		3C2A4911262C843A00D0E09D /* TokenizerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A4910262C843A00D0E09D /* TokenizerV2.swift */; };
+		3C2A4914262C846100D0E09D /* TokenizerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A4910262C843A00D0E09D /* TokenizerV2.swift */; };
+		3C2A4918262C847F00D0E09D /* TokenizerV2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A4917262C847F00D0E09D /* TokenizerV2Tests.swift */; };
+		3C2A491C262C9A9100D0E09D /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A491B262C9A9100D0E09D /* StateMachine.swift */; };
+		3C2A491F262C9C2A00D0E09D /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A491B262C9A9100D0E09D /* StateMachine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -44,6 +49,9 @@
 		3C2A48DA262C1CDD00D0E09D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C2A48F2262C20B800D0E09D /* JackAnalyzer */ = {isa = PBXFileReference; lastKnownFileType = folder; path = JackAnalyzer; sourceTree = "<group>"; };
 		3C2A490A262C355A00D0E09D /* CompilationEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompilationEngineTests.swift; sourceTree = "<group>"; };
+		3C2A4910262C843A00D0E09D /* TokenizerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenizerV2.swift; sourceTree = "<group>"; };
+		3C2A4917262C847F00D0E09D /* TokenizerV2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenizerV2Tests.swift; sourceTree = "<group>"; };
+		3C2A491B262C9A9100D0E09D /* StateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateMachine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +96,8 @@
 			children = (
 				3C2A48BC2626DEE100D0E09D /* main.swift */,
 				3C2A48C52626E08E00D0E09D /* Tokenizer.swift */,
+				3C2A4910262C843A00D0E09D /* TokenizerV2.swift */,
+				3C2A491B262C9A9100D0E09D /* StateMachine.swift */,
 				3C2A48C82626E8AB00D0E09D /* CompilationEngine.swift */,
 				3C2A48CB2626EE0C00D0E09D /* String+.swift */,
 				3C2A48CE2629958900D0E09D /* Func.swift */,
@@ -99,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				3C2A48D8262C1CDD00D0E09D /* TokenizerTests.swift */,
+				3C2A4917262C847F00D0E09D /* TokenizerV2Tests.swift */,
 				3C2A490A262C355A00D0E09D /* CompilationEngineTests.swift */,
 				3C2A48DA262C1CDD00D0E09D /* Info.plist */,
 			);
@@ -204,7 +215,9 @@
 				3C2A48BD2626DEE100D0E09D /* main.swift in Sources */,
 				3C2A48C92626E8AB00D0E09D /* CompilationEngine.swift in Sources */,
 				3C2A48CC2626EE0C00D0E09D /* String+.swift in Sources */,
+				3C2A4911262C843A00D0E09D /* TokenizerV2.swift in Sources */,
 				3C2A48C62626E08E00D0E09D /* Tokenizer.swift in Sources */,
+				3C2A491C262C9A9100D0E09D /* StateMachine.swift in Sources */,
 				3C2A48CF2629958900D0E09D /* Func.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -217,8 +230,11 @@
 				3C2A490B262C355A00D0E09D /* CompilationEngineTests.swift in Sources */,
 				3C2A4901262C21AC00D0E09D /* CompilationEngine.swift in Sources */,
 				3C2A4904262C21AF00D0E09D /* String+.swift in Sources */,
+				3C2A491F262C9C2A00D0E09D /* StateMachine.swift in Sources */,
+				3C2A4914262C846100D0E09D /* TokenizerV2.swift in Sources */,
 				3C2A48FE262C21AA00D0E09D /* Tokenizer.swift in Sources */,
 				3C2A4907262C21B200D0E09D /* Func.swift in Sources */,
+				3C2A4918262C847F00D0E09D /* TokenizerV2Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
