@@ -23,6 +23,30 @@
 		3C2A4918262C847F00D0E09D /* TokenizerV2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A4917262C847F00D0E09D /* TokenizerV2Tests.swift */; };
 		3C2A491C262C9A9100D0E09D /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A491B262C9A9100D0E09D /* StateMachine.swift */; };
 		3C2A491F262C9C2A00D0E09D /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A491B262C9A9100D0E09D /* StateMachine.swift */; };
+		3C2A492426356B1B00D0E09D /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A492326356B1B00D0E09D /* State.swift */; };
+		3C2A492826356B3F00D0E09D /* InitialState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A492726356B3F00D0E09D /* InitialState.swift */; };
+		3C2A492C26356B5700D0E09D /* TransitionalIdentifierOrKeywordState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A492B26356B5700D0E09D /* TransitionalIdentifierOrKeywordState.swift */; };
+		3C2A493226356B9400D0E09D /* TransitionalIntegerLiteralState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A493126356B9400D0E09D /* TransitionalIntegerLiteralState.swift */; };
+		3C2A493826356BB000D0E09D /* SymbolState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A493726356BB000D0E09D /* SymbolState.swift */; };
+		3C2A493E26356BC700D0E09D /* TransitionalStringLiteralState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A493D26356BC700D0E09D /* TransitionalStringLiteralState.swift */; };
+		3C2A494426356BDF00D0E09D /* TransitionalCommentOrSymbolState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A494326356BDF00D0E09D /* TransitionalCommentOrSymbolState.swift */; };
+		3C2A494A26356BFA00D0E09D /* CommentState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A494926356BFA00D0E09D /* CommentState.swift */; };
+		3C2A494D26356C2200D0E09D /* InitialState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A492726356B3F00D0E09D /* InitialState.swift */; };
+		3C2A495026356C2400D0E09D /* TransitionalIdentifierOrKeywordState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A492B26356B5700D0E09D /* TransitionalIdentifierOrKeywordState.swift */; };
+		3C2A495326356C2700D0E09D /* TransitionalIntegerLiteralState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A493126356B9400D0E09D /* TransitionalIntegerLiteralState.swift */; };
+		3C2A495626356C2900D0E09D /* SymbolState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A493726356BB000D0E09D /* SymbolState.swift */; };
+		3C2A495926356C2B00D0E09D /* TransitionalStringLiteralState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A493D26356BC700D0E09D /* TransitionalStringLiteralState.swift */; };
+		3C2A495C26356C2D00D0E09D /* TransitionalCommentOrSymbolState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A494326356BDF00D0E09D /* TransitionalCommentOrSymbolState.swift */; };
+		3C2A496126356C5900D0E09D /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A492326356B1B00D0E09D /* State.swift */; };
+		3C2A496426356CED00D0E09D /* CommentState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A494926356BFA00D0E09D /* CommentState.swift */; };
+		3C2A49682635702100D0E09D /* IdentifierState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A49672635702100D0E09D /* IdentifierState.swift */; };
+		3C2A49692635702200D0E09D /* IdentifierState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A49672635702100D0E09D /* IdentifierState.swift */; };
+		3C2A496D2635708500D0E09D /* KeywordState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A496C2635708500D0E09D /* KeywordState.swift */; };
+		3C2A496E2635708500D0E09D /* KeywordState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A496C2635708500D0E09D /* KeywordState.swift */; };
+		3C2A49722635712D00D0E09D /* IntegerLiteralState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A49712635712D00D0E09D /* IntegerLiteralState.swift */; };
+		3C2A49732635712D00D0E09D /* IntegerLiteralState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A49712635712D00D0E09D /* IntegerLiteralState.swift */; };
+		3C2A497F263572C500D0E09D /* StringLiteralState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A497E263572C500D0E09D /* StringLiteralState.swift */; };
+		3C2A4980263572C500D0E09D /* StringLiteralState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A497E263572C500D0E09D /* StringLiteralState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -52,6 +76,18 @@
 		3C2A4910262C843A00D0E09D /* TokenizerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenizerV2.swift; sourceTree = "<group>"; };
 		3C2A4917262C847F00D0E09D /* TokenizerV2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenizerV2Tests.swift; sourceTree = "<group>"; };
 		3C2A491B262C9A9100D0E09D /* StateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateMachine.swift; sourceTree = "<group>"; };
+		3C2A492326356B1B00D0E09D /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		3C2A492726356B3F00D0E09D /* InitialState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialState.swift; sourceTree = "<group>"; };
+		3C2A492B26356B5700D0E09D /* TransitionalIdentifierOrKeywordState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionalIdentifierOrKeywordState.swift; sourceTree = "<group>"; };
+		3C2A493126356B9400D0E09D /* TransitionalIntegerLiteralState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionalIntegerLiteralState.swift; sourceTree = "<group>"; };
+		3C2A493726356BB000D0E09D /* SymbolState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolState.swift; sourceTree = "<group>"; };
+		3C2A493D26356BC700D0E09D /* TransitionalStringLiteralState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionalStringLiteralState.swift; sourceTree = "<group>"; };
+		3C2A494326356BDF00D0E09D /* TransitionalCommentOrSymbolState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionalCommentOrSymbolState.swift; sourceTree = "<group>"; };
+		3C2A494926356BFA00D0E09D /* CommentState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentState.swift; sourceTree = "<group>"; };
+		3C2A49672635702100D0E09D /* IdentifierState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierState.swift; sourceTree = "<group>"; };
+		3C2A496C2635708500D0E09D /* KeywordState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordState.swift; sourceTree = "<group>"; };
+		3C2A49712635712D00D0E09D /* IntegerLiteralState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegerLiteralState.swift; sourceTree = "<group>"; };
+		3C2A497E263572C500D0E09D /* StringLiteralState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringLiteralState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +133,7 @@
 				3C2A48BC2626DEE100D0E09D /* main.swift */,
 				3C2A48C52626E08E00D0E09D /* Tokenizer.swift */,
 				3C2A4910262C843A00D0E09D /* TokenizerV2.swift */,
-				3C2A491B262C9A9100D0E09D /* StateMachine.swift */,
+				3C2A492226356B0300D0E09D /* State Machine */,
 				3C2A48C82626E8AB00D0E09D /* CompilationEngine.swift */,
 				3C2A48CB2626EE0C00D0E09D /* String+.swift */,
 				3C2A48CE2629958900D0E09D /* Func.swift */,
@@ -122,6 +158,26 @@
 				3C2A48F2262C20B800D0E09D /* JackAnalyzer */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3C2A492226356B0300D0E09D /* State Machine */ = {
+			isa = PBXGroup;
+			children = (
+				3C2A491B262C9A9100D0E09D /* StateMachine.swift */,
+				3C2A492326356B1B00D0E09D /* State.swift */,
+				3C2A492726356B3F00D0E09D /* InitialState.swift */,
+				3C2A492B26356B5700D0E09D /* TransitionalIdentifierOrKeywordState.swift */,
+				3C2A49672635702100D0E09D /* IdentifierState.swift */,
+				3C2A496C2635708500D0E09D /* KeywordState.swift */,
+				3C2A493126356B9400D0E09D /* TransitionalIntegerLiteralState.swift */,
+				3C2A49712635712D00D0E09D /* IntegerLiteralState.swift */,
+				3C2A493726356BB000D0E09D /* SymbolState.swift */,
+				3C2A493D26356BC700D0E09D /* TransitionalStringLiteralState.swift */,
+				3C2A497E263572C500D0E09D /* StringLiteralState.swift */,
+				3C2A494326356BDF00D0E09D /* TransitionalCommentOrSymbolState.swift */,
+				3C2A494926356BFA00D0E09D /* CommentState.swift */,
+			);
+			path = "State Machine";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,12 +269,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C2A48BD2626DEE100D0E09D /* main.swift in Sources */,
+				3C2A493826356BB000D0E09D /* SymbolState.swift in Sources */,
 				3C2A48C92626E8AB00D0E09D /* CompilationEngine.swift in Sources */,
 				3C2A48CC2626EE0C00D0E09D /* String+.swift in Sources */,
+				3C2A49682635702100D0E09D /* IdentifierState.swift in Sources */,
 				3C2A4911262C843A00D0E09D /* TokenizerV2.swift in Sources */,
 				3C2A48C62626E08E00D0E09D /* Tokenizer.swift in Sources */,
+				3C2A49722635712D00D0E09D /* IntegerLiteralState.swift in Sources */,
+				3C2A492C26356B5700D0E09D /* TransitionalIdentifierOrKeywordState.swift in Sources */,
+				3C2A496D2635708500D0E09D /* KeywordState.swift in Sources */,
+				3C2A497F263572C500D0E09D /* StringLiteralState.swift in Sources */,
 				3C2A491C262C9A9100D0E09D /* StateMachine.swift in Sources */,
+				3C2A492826356B3F00D0E09D /* InitialState.swift in Sources */,
+				3C2A494426356BDF00D0E09D /* TransitionalCommentOrSymbolState.swift in Sources */,
+				3C2A494A26356BFA00D0E09D /* CommentState.swift in Sources */,
 				3C2A48CF2629958900D0E09D /* Func.swift in Sources */,
+				3C2A493E26356BC700D0E09D /* TransitionalStringLiteralState.swift in Sources */,
+				3C2A493226356B9400D0E09D /* TransitionalIntegerLiteralState.swift in Sources */,
+				3C2A492426356B1B00D0E09D /* State.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,13 +295,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C2A48D9262C1CDD00D0E09D /* TokenizerTests.swift in Sources */,
+				3C2A495026356C2400D0E09D /* TransitionalIdentifierOrKeywordState.swift in Sources */,
+				3C2A496426356CED00D0E09D /* CommentState.swift in Sources */,
 				3C2A490B262C355A00D0E09D /* CompilationEngineTests.swift in Sources */,
+				3C2A49692635702200D0E09D /* IdentifierState.swift in Sources */,
+				3C2A49732635712D00D0E09D /* IntegerLiteralState.swift in Sources */,
+				3C2A495626356C2900D0E09D /* SymbolState.swift in Sources */,
+				3C2A494D26356C2200D0E09D /* InitialState.swift in Sources */,
 				3C2A4901262C21AC00D0E09D /* CompilationEngine.swift in Sources */,
 				3C2A4904262C21AF00D0E09D /* String+.swift in Sources */,
+				3C2A496126356C5900D0E09D /* State.swift in Sources */,
+				3C2A495C26356C2D00D0E09D /* TransitionalCommentOrSymbolState.swift in Sources */,
 				3C2A491F262C9C2A00D0E09D /* StateMachine.swift in Sources */,
 				3C2A4914262C846100D0E09D /* TokenizerV2.swift in Sources */,
+				3C2A495326356C2700D0E09D /* TransitionalIntegerLiteralState.swift in Sources */,
 				3C2A48FE262C21AA00D0E09D /* Tokenizer.swift in Sources */,
 				3C2A4907262C21B200D0E09D /* Func.swift in Sources */,
+				3C2A495926356C2B00D0E09D /* TransitionalStringLiteralState.swift in Sources */,
+				3C2A496E2635708500D0E09D /* KeywordState.swift in Sources */,
+				3C2A4980263572C500D0E09D /* StringLiteralState.swift in Sources */,
 				3C2A4918262C847F00D0E09D /* TokenizerV2Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

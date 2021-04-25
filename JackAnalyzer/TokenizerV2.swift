@@ -25,7 +25,6 @@ final class TokenizerV2 {
     private let code: String
     private var tokens: [TokenV2] = []
     private var currentIndex: Int = 0
-    private var currentSymbol: String = ""
     private var stateMachine: StateMachine
 
     init(_ code: String) {
@@ -36,19 +35,17 @@ final class TokenizerV2 {
     
     func scanTokens() throws -> [TokenV2] {
         while(!isEnd()) {
-            currentSymbol = code[currentIndex]
-            try stateMachine.eat(currentSymbol)
+            try stateMachine.eat(code[currentIndex])
             currentIndex += 1
         }
         try stateMachine.endOfString()
         return tokens
     }
     
-    func add(_ token: TokenV2) throws {
+    func add(_ token: TokenV2) {
         tokens.append(token)
         self.stateMachine = StateMachine()
         self.stateMachine.tokenizer = self
-        try stateMachine.eat(currentSymbol)
     }
 }
 
