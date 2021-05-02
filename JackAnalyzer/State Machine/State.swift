@@ -55,9 +55,11 @@ open class State {
         "return": .return,
     ]
     
+    let controlCharacters: [String] = [" ", "\n", "\t"]
+    
     weak var stateMachine: StateMachine?
     
-    func eat(_ char: String) throws {}
+    func eat(_ char: String) throws -> Bool { false }
     func endOfString() throws {}
     func enter() {}
 }

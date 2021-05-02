@@ -35,7 +35,11 @@ final class TokenizerV2 {
     
     func scanTokens() throws -> [TokenV2] {
         while(!isEnd()) {
-            try stateMachine.eat(code[currentIndex])
+            let currentSymbol = code[currentIndex]
+            while try !stateMachine.eat(currentSymbol) {
+                stateMachine = StateMachine()
+                stateMachine.tokenizer = self
+            }
             currentIndex += 1
         }
         try stateMachine.endOfString()
@@ -44,8 +48,6 @@ final class TokenizerV2 {
     
     func add(_ token: TokenV2) {
         tokens.append(token)
-        self.stateMachine = StateMachine()
-        self.stateMachine.tokenizer = self
     }
 }
 

@@ -19,15 +19,13 @@ final class TransitionalIntegerLiteralState: State {
         lexeme.append(char)
     }
     
-    override func eat(_ char: String) throws {
-        if symbols.keys.contains(char) {
-            let newState = SymbolState(char)
-            newState.stateMachine = stateMachine
-            stateMachine?.state = newState
-        } else if [" ", "\n", "\t"].contains(char) {
+    override func eat(_ char: String) throws -> Bool {
+        if symbols.keys.contains(char) || controlCharacters.contains(char) {
             switchToFinalState()
+            return false
         } else if Character(char).isNumber {
             lexeme.append(char)
+            return true
         } else {
             throw DigitError.notSupportedSymbol
         }

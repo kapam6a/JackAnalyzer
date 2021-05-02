@@ -15,15 +15,17 @@ final class TransitionalCommentOrSymbolState: State {
         lexeme.append(char)
     }
     
-    override func eat(_ char: String) throws {
+    override func eat(_ char: String) throws -> Bool {
         if char == "/" {
             let newState = CommentState()
             newState.stateMachine = stateMachine
             stateMachine?.state = newState
+            return true
         } else {
             let newState = SymbolState(lexeme)
             newState.stateMachine = stateMachine
             stateMachine?.state = newState
+            return false
         }
     }
 }

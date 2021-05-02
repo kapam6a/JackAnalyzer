@@ -9,7 +9,7 @@ import Foundation
 
 final class InitialState: State {
     
-    override func eat(_ char: String) throws {
+    override func eat(_ char: String) throws -> Bool {
         if Character(char).isNumber {
             let newState = TransitionalIntegerLiteralState(char)
             newState.stateMachine = stateMachine
@@ -26,10 +26,12 @@ final class InitialState: State {
             let newState = SymbolState(char)
             newState.stateMachine = stateMachine
             stateMachine?.state = newState
-        } else if ![" ", "\n", "\t"].contains(char) {
+        } else if !controlCharacters.contains(char) {
             let newState = TransitionalIdentifierOrKeywordState(char)
             newState.stateMachine = stateMachine
             stateMachine?.state = newState
         }
+        
+        return true
     }
 }

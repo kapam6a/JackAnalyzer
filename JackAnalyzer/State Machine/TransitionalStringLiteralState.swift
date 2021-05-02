@@ -19,11 +19,13 @@ final class TransitionalStringLiteralState: State {
         lexeme.append(char)
     }
     
-    override func eat(_ char: String) throws {
+    override func eat(_ char: String) throws -> Bool {
         if lexeme.hasSuffix("\"") && lexeme.hasPrefix("\"") && lexeme.length > 1 {
             switchToFinalState()
+            return false
         } else {
             lexeme.append(char)
+            return true
         }
     }
     

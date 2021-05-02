@@ -15,16 +15,13 @@ final class TransitionalIdentifierOrKeywordState: State {
         lexeme.append(char)
     }
     
-    override func eat(_ char: String) {
-        if symbols.keys.contains(char) {
-            let newState = SymbolState(char)
-            newState.stateMachine = stateMachine
-            stateMachine?.state = newState
+    override func eat(_ char: String) throws -> Bool {
+        if symbols.keys.contains(char) || controlCharacters.contains(char) {
             switchToFinalState()
-        } else if [" ", "\n", "\t"].contains(char) {
-            switchToFinalState()
+            return false
         } else {
             lexeme.append(char)
+            return true
         }
     }
     

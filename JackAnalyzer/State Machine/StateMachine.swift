@@ -21,7 +21,7 @@ final class StateMachine {
         state.stateMachine = self
     }
     
-    func eat(_ char: String) throws {
+    @discardableResult func eat(_ char: String) throws -> Bool {
         try state.eat(char)
     }
     

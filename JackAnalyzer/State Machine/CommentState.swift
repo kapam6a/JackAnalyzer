@@ -9,11 +9,10 @@ import Foundation
 
 final class CommentState: State {
     
-    override func eat(_ char: String) throws {
+    override func eat(_ char: String) throws -> Bool {
         if char == "\n" {
-            let newState = InitialState()
-            newState.stateMachine = stateMachine
-            stateMachine?.state = newState
+            return false
         }
+        return true
     }
 }
