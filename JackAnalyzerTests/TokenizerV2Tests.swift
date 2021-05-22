@@ -7,8 +7,6 @@
 
 import XCTest
 
-import XCTest
-
 final class TokenizerV2Tests: XCTestCase {
 
     func testScanTokens_withOneIdentifier_returnsTokens() throws {

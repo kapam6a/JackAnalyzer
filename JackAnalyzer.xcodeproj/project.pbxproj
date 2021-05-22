@@ -47,6 +47,11 @@
 		3C2A49732635712D00D0E09D /* IntegerLiteralState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A49712635712D00D0E09D /* IntegerLiteralState.swift */; };
 		3C2A497F263572C500D0E09D /* StringLiteralState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A497E263572C500D0E09D /* StringLiteralState.swift */; };
 		3C2A4980263572C500D0E09D /* StringLiteralState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2A497E263572C500D0E09D /* StringLiteralState.swift */; };
+		3C33E050265929EC00EF1612 /* TokenType+XML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C33E04F265929EC00EF1612 /* TokenType+XML.swift */; };
+		3C33E05326592D2100EF1612 /* TokenType+XML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C33E04F265929EC00EF1612 /* TokenType+XML.swift */; };
+		3C462B09263E9A0400C44968 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C462B08263E9A0400C44968 /* Parser.swift */; };
+		3C462B0D26400CDD00C44968 /* ParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C462B0C26400CDD00C44968 /* ParserTests.swift */; };
+		3C462B1226400D1E00C44968 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C462B08263E9A0400C44968 /* Parser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -88,6 +93,9 @@
 		3C2A496C2635708500D0E09D /* KeywordState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordState.swift; sourceTree = "<group>"; };
 		3C2A49712635712D00D0E09D /* IntegerLiteralState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegerLiteralState.swift; sourceTree = "<group>"; };
 		3C2A497E263572C500D0E09D /* StringLiteralState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringLiteralState.swift; sourceTree = "<group>"; };
+		3C33E04F265929EC00EF1612 /* TokenType+XML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TokenType+XML.swift"; sourceTree = "<group>"; };
+		3C462B08263E9A0400C44968 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		3C462B0C26400CDD00C44968 /* ParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,12 +139,10 @@
 			isa = PBXGroup;
 			children = (
 				3C2A48BC2626DEE100D0E09D /* main.swift */,
-				3C2A48C52626E08E00D0E09D /* Tokenizer.swift */,
-				3C2A4910262C843A00D0E09D /* TokenizerV2.swift */,
-				3C2A492226356B0300D0E09D /* State Machine */,
-				3C2A48C82626E8AB00D0E09D /* CompilationEngine.swift */,
+				3C462B162640102800C44968 /* Depricated */,
+				3C462B152640101A00C44968 /* Tokenizer */,
+				3C462B17264010AB00C44968 /* Parser */,
 				3C2A48CB2626EE0C00D0E09D /* String+.swift */,
-				3C2A48CE2629958900D0E09D /* Func.swift */,
 			);
 			path = JackAnalyzer;
 			sourceTree = "<group>";
@@ -147,6 +153,7 @@
 				3C2A48D8262C1CDD00D0E09D /* TokenizerTests.swift */,
 				3C2A4917262C847F00D0E09D /* TokenizerV2Tests.swift */,
 				3C2A490A262C355A00D0E09D /* CompilationEngineTests.swift */,
+				3C462B0C26400CDD00C44968 /* ParserTests.swift */,
 				3C2A48DA262C1CDD00D0E09D /* Info.plist */,
 			);
 			path = JackAnalyzerTests;
@@ -178,6 +185,34 @@
 				3C2A494926356BFA00D0E09D /* CommentState.swift */,
 			);
 			path = "State Machine";
+			sourceTree = "<group>";
+		};
+		3C462B152640101A00C44968 /* Tokenizer */ = {
+			isa = PBXGroup;
+			children = (
+				3C2A4910262C843A00D0E09D /* TokenizerV2.swift */,
+				3C2A492226356B0300D0E09D /* State Machine */,
+			);
+			path = Tokenizer;
+			sourceTree = "<group>";
+		};
+		3C462B162640102800C44968 /* Depricated */ = {
+			isa = PBXGroup;
+			children = (
+				3C2A48CE2629958900D0E09D /* Func.swift */,
+				3C2A48C82626E8AB00D0E09D /* CompilationEngine.swift */,
+				3C2A48C52626E08E00D0E09D /* Tokenizer.swift */,
+			);
+			path = Depricated;
+			sourceTree = "<group>";
+		};
+		3C462B17264010AB00C44968 /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				3C462B08263E9A0400C44968 /* Parser.swift */,
+				3C33E04F265929EC00EF1612 /* TokenType+XML.swift */,
+			);
+			path = Parser;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,8 +312,10 @@
 				3C2A48C62626E08E00D0E09D /* Tokenizer.swift in Sources */,
 				3C2A49722635712D00D0E09D /* IntegerLiteralState.swift in Sources */,
 				3C2A492C26356B5700D0E09D /* TransitionalIdentifierOrKeywordState.swift in Sources */,
+				3C462B09263E9A0400C44968 /* Parser.swift in Sources */,
 				3C2A496D2635708500D0E09D /* KeywordState.swift in Sources */,
 				3C2A497F263572C500D0E09D /* StringLiteralState.swift in Sources */,
+				3C33E050265929EC00EF1612 /* TokenType+XML.swift in Sources */,
 				3C2A491C262C9A9100D0E09D /* StateMachine.swift in Sources */,
 				3C2A492826356B3F00D0E09D /* InitialState.swift in Sources */,
 				3C2A494426356BDF00D0E09D /* TransitionalCommentOrSymbolState.swift in Sources */,
@@ -303,8 +340,10 @@
 				3C2A495626356C2900D0E09D /* SymbolState.swift in Sources */,
 				3C2A494D26356C2200D0E09D /* InitialState.swift in Sources */,
 				3C2A4901262C21AC00D0E09D /* CompilationEngine.swift in Sources */,
+				3C462B0D26400CDD00C44968 /* ParserTests.swift in Sources */,
 				3C2A4904262C21AF00D0E09D /* String+.swift in Sources */,
 				3C2A496126356C5900D0E09D /* State.swift in Sources */,
+				3C462B1226400D1E00C44968 /* Parser.swift in Sources */,
 				3C2A495C26356C2D00D0E09D /* TransitionalCommentOrSymbolState.swift in Sources */,
 				3C2A491F262C9C2A00D0E09D /* StateMachine.swift in Sources */,
 				3C2A4914262C846100D0E09D /* TokenizerV2.swift in Sources */,
@@ -313,6 +352,7 @@
 				3C2A4907262C21B200D0E09D /* Func.swift in Sources */,
 				3C2A495926356C2B00D0E09D /* TransitionalStringLiteralState.swift in Sources */,
 				3C2A496E2635708500D0E09D /* KeywordState.swift in Sources */,
+				3C33E05326592D2100EF1612 /* TokenType+XML.swift in Sources */,
 				3C2A4980263572C500D0E09D /* StringLiteralState.swift in Sources */,
 				3C2A4918262C847F00D0E09D /* TokenizerV2Tests.swift in Sources */,
 			);
